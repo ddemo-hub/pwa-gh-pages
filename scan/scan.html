@@ -30,16 +30,14 @@
         
         #highlightedCanvas {
             position: fixed;
-            top: 0; left: 0;
+            top: env(safe-area-inset-top, 0);
+            left: env(safe-area-inset-left, 0);
             width: 100vw;
             height: 100vh;
-            min-width: 100vw;
-            min-height: 100vh;
             display: block;
             z-index: 1;
             object-fit: contain;
             background: #000;
-            touch-action: none;
         }
         
         .camera-btn, #captureBtn {
@@ -78,15 +76,5 @@
     <script src="https://cdn.jsdelivr.net/gh/ColonelParrot/jscanify@master/src/jscanify.min.js"></script>
     <script src="utils.js"></script>
     <script src="scan.js"></script>
-    <script>
-        function resizeCanvasToViewport() {
-            const canvas = document.getElementById('highlightedCanvas');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvasToViewport);
-        window.addEventListener('orientationchange', resizeCanvasToViewport);
-        resizeCanvasToViewport();
-    </script>
 </body>
 </html> 

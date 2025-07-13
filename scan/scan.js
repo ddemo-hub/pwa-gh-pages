@@ -39,13 +39,26 @@ navigator.mediaDevices.getUserMedia({
             const scannedCanvas = scanner.highlightPaper(hiddenCanvas);
             
             highlightedCanvasCtx.clearRect(0, 0, highlightedCanvas.width, highlightedCanvas.height);
-            highlightedCanvasCtx.drawImage(scannedCanvas, 0, 0, highlightedCanvas.width, highlightedCanvas.height);
-        }, 10);
+            highlightedCanvasCtx.drawImage(
+                scannedCanvas,
+                0, 0,
+                scannedCanvas.width,
+                scannedCanvas.height,
+                0, 0,
+                highlightedCanvas.width,
+                highlightedCanvas.height
+            );
+        }, 100);
     };
 })
 .catch(err => {
     alert('Could not access the camera.');
     console.error(err);
+});
+
+window.addEventListener('resize', () => {
+    highlightedCanvas.style.width = window.innerWidth + 'px';
+    highlightedCanvas.style.height = window.innerHeight + 'px';
 });
 
 
