@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>Sefer Takip</title>
+    
+    <!-- Styles -->
+    <style>
+        body {
+            background: #111;
+            color: #fff;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .images-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        @media (max-width: 600px) {
+            .images-container {
+                flex-direction: column;
+                gap: 16px;
+                margin-top: 16px;
+                width: 100vw;
+                align-items: center;
+            }
+            img {
+                max-width: 90vw;
+                max-height: 40vh;
+            }
+        }
+        .img-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            max-width: 40vw;
+            max-height: 60vh;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+            background: #222;
+        }
+        .label {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #ccc;
+        }
+        .send-btn {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 32px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.2s;
+        }
+        .send-btn:active {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container">
+        <div class="img-block">
+            <img id="originalImg" alt="Belge">
+        </div>
+    </div>
+
+    <button class="send-btn" id="sendBtn">Gönder</button>
+
+    <script src="send.js"></script>
+</body>
+</html> 

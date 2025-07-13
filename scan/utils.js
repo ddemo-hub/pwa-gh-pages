@@ -15,3 +15,17 @@ function getPaperDimensions(corners) {
   
     return { width, height };
 }
+
+function toDataURL(element) {
+    if (element instanceof HTMLCanvasElement) {
+        return element.toDataURL('image/png');
+    } else if (element instanceof HTMLImageElement) {
+		// Draw image to a temp canvas
+		const tempCanvas = document.createElement('canvas');
+		tempCanvas.width = element.naturalWidth || element.width;
+		tempCanvas.height = element.naturalHeight || element.height;
+		tempCanvas.getContext('2d').drawImage(element, 0, 0);
+		return tempCanvas.toDataURL('image/png');
+    }
+    return null;
+}

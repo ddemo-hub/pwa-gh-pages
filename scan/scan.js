@@ -1,6 +1,7 @@
 // Initialize scanner
 const scanner = new jscanify();
 
+
 // Access the camera and set up video stream
 const video = document.getElementById('video');
 const captureBtn = document.getElementById('captureBtn');
@@ -50,21 +51,57 @@ navigator.mediaDevices.getUserMedia({
 
 // Capture logic
 cv.onRuntimeInitialized = function() {
-    const scan = (imageElement) => {
+    function scan (imageElement) {
         const contour = scanner.findPaperContour(cv.imread(imageElement));
         const cornerPoints = scanner.getCornerPoints(contour);
+        
         const { width, height } = getPaperDimensions(cornerPoints);
         
         const scanned = scanner.extractPaper(imageElement, width, height, cornerPoints);
-        
-        document.body.appendChild(scanned);
+        return scanned;
     };
 
-    captureBtn.onclick = function() {
-        // Create an image element from the canvas
+    captureBtn.onclick = async function() {
+        let originalDataUrl = null;
+
+        // Try ImageCapture API
+        const stream = video.srcObject;
+        let imageBitmap = null;
+        if (stream) {
+            const track = stream.getVideoTracks()[0];
+            if (window.ImageCapture && track) {
+                try {
+                    const imageCapture = new window.ImageCapture(track);
+                    imageBitmap = await imageCapture.grabFrame();
+                } catch (e) {
+                    imageBitmap = null;
+                }
+            }
+        }
+        if (imageBitmap) {
+            // Draw ImageBitmap to canvas
+            hiddenCanvas.width = imageBitmap.width;
+            hiddenCanvas.height = imageBitmap.height;
+            hiddenCanvasCtx.drawImage(imageBitmap, 0, 0);
+            originalDataUrl = hiddenCanvas.toDataURL('image/png');
+        } else {
+            // Fallback: draw current video frame to canvas
+            hiddenCanvasCtx.drawImage(video, 0, 0, hiddenCanvas.width, hiddenCanvas.height);
+            originalDataUrl = hiddenCanvas.toDataURL('image/png');
+        }
+
+        // Create image element for scan
         const img = new window.Image();
         img.onload = function() {
-            scan(img);
+            const scannedCanvas = scan(img);
+            const scannedDataUrl = toDataURL(scannedCanvas);
+            
+            // Store both images in sessionStorage
+            sessionStorage.setItem('originalImage', originalDataUrl);
+            sessionStorage.setItem('scannedImage', scannedDataUrl);
+            // Redirect to send/send.html
+            window.location.href = '../send/send.html';
         };
+        img.src = originalDataUrl;
     };
-} 
+}
