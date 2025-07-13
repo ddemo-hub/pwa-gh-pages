@@ -5,6 +5,10 @@ goButton.addEventListener('click', () => {
     camInput.click();
 });
 
+document.getElementById('exitButton').addEventListener('click', function () {
+    window.location.href = '../../index.html';
+});
+
 camInput.addEventListener('change', function () {
     const file = this.files[0];
     if (file) {
