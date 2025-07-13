@@ -15,12 +15,16 @@
             background: #EEEEF6;
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
         }
 
         .frame {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             box-sizing: border-box;
             padding: 40px 8px 45px 8px;
             background-color: #2c2c2c;
@@ -108,16 +112,18 @@
     </style>
 </head>
 <body>        
+    <div class="exit-button" id="exitButton">ÇIKIŞ YAP</div>
+
     <div class="frame">
-        <div class="exit-button" id="exitButton">ÇIKIŞ YAP</div>
-
-        <!-- Hidden camera input -->
-        <input type="file" accept="image/*" capture="environment" id="cameraInput" />
-
-        <button class="circle-button" id="goButton">
-            <span class="plus">+</span>
-        </button>
+        
     </div>
+    
+    <!-- Hidden camera input -->
+    <input type="file" accept="image/*" capture="environment" id="cameraInput" />
+
+    <button class="circle-button" id="goButton">
+        <span class="plus">+</span>
+    </button>
 
     <!-- Scripts -->
     <script src="main.js"></script>
