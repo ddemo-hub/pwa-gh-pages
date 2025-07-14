@@ -1,11 +1,12 @@
 const camInput = document.getElementById('cameraInput');
 const goButton = document.getElementById('goButton');
+const exitButton = document.getElementById("exitButton");
 
 goButton.addEventListener('click', () => {
     camInput.click();
 });
 
-document.getElementById('exitButton').addEventListener('click', function () {
+exitButton.addEventListener("click", function () {
     window.location.href = '../../index.html';
 });
 
