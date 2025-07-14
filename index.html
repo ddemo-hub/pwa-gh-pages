@@ -7,7 +7,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
 
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+
     <title>Sefer Takip</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
 
     <!-- Styles -->
     <style>
@@ -87,7 +93,7 @@
     <!-- Scripts -->
     <script>
         // Choose one of the two images randomly
-        const images = ['assets/background1.jpg', 'assets/background2.jpg'];
+        const images = ['assets/backgrounds/background1.jpg', 'assets/backgrounds/background2.jpg'];
         const selectedImage = images[Math.floor(Math.random() * images.length)];
         
         // Apply to the body
@@ -106,5 +112,19 @@
     </button>
 
     <script src="src/index.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered: ', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
