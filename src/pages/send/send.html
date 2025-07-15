@@ -53,28 +53,44 @@
         button {
             position: fixed;
             bottom: 24px;
-            right: 24px;
-            background: #800000;
+            width: 50px;
+            height: 50px;
+            background: #55a800;
             color: white;
+            font-weight: bolder;
             border: none;
-            border-radius: 50px;
-            padding: 14px 24px;
-            font-size: 1.1rem;
+            border-radius: 50%; /* Make buttons circular */
+            font-size: 1.6rem;
+            line-height: 50px; /* Center content vertically */
+            text-align: center; /* Center content horizontally */
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
+        button:first-of-type { /* Checkmark button */
+            right: 86px; /* Position to the left of the X button */
+        }
+
+        button:last-of-type { /* X button */
+            right: 14px;
+        }
+
+        .cancel-btn {
+            background: maroon; /* Maroon color for the X button */
+        }
+
         button:active {
             transform: scale(0.96);
-            background-color: #a00000;
         }
     </style>
 </head>
 <body>
     <img id="latestImage" class="main-image" alt="Belge">
     <input type="text" id="description" placeholder="Belgenin kısa açıklaması" />
-    <button class="send-btn" id="sendBtn">Gönder</button>
     
+    <button class="send-btn" id="sendBtn">&checkmark;</button>
+    <button class="send-btn cancel-btn" id="cancelBtn">&#x2715;</button>
+
     <script src="send.js"></script>
     <script src="../../utils/database.js"></script>
 </body>

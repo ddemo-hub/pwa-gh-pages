@@ -6,16 +6,24 @@ if (latestImage) document.getElementById('latestImage').src = latestImage;
 const sendBtn = document.getElementById('sendBtn');
 sendBtn.addEventListener('click', async () => {
     const description = document.getElementById('description').value;
-    const image = sessionStorage.getItem('latestImage');
+    const imageData = sessionStorage.getItem('latestImage');
+    
+    const date = new Date();
+    const formattedDate = date.toLocaleString('tr-TR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false // 24-hour format
+    });
 
-    // Prepare payload
-    const payload = {
-        description,
-        image, // base64 or data URL
-    };
-
-    // TODO
-    console.log(payload);
+    // Save to IndexedDB
+    await saveVoucher({ imageData, description, date: formattedDate });
 
     window.location.href = '../main/main.html';
 });
+
+// Add event listener to the cancel button
+const cancelBtn = document.getElementById('cancelBtn');
+cancelBtn.addEventListener('click', async () => window.location.href = '../main/main.html');

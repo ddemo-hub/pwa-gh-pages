@@ -4,7 +4,7 @@ const urlsToCache = [
 	'./',
 	'./index.html',
 	'./src/index.js',
-	
+
 	'./src/pages/main/main.html',
 	'./src/pages/main/main.js',
 	'./src/pages/send/send.html',
@@ -21,8 +21,7 @@ const urlsToCache = [
 	'./assets/icons/icon-512x512.png',
 
 	// FONTS
-	'https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap',
-	'https://fonts.gstatic.com/s/manufacturingconsent/v1/N0bL2TVONuFkPkuHfiECSLCwuZS-D-IsakikRw.ttf'
+	
 ];
 
 self.addEventListener('install', (event) => {

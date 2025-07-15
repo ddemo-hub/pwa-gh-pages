@@ -13,10 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     goButton.addEventListener('click', () => {
         const seferKodu = input.value.trim();
         
-        // TODO: seferKodu logic
-        console.log('Sefer Kodu: ', seferKodu)
+        console.log("Sefer Kodu: ", seferKodu);
 
-        // DEV
         window.location.href = 'src/pages/main/main.html';
     });
 });
