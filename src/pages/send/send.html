@@ -6,92 +6,126 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
-    
+
     <title>Sefer Takip</title>
-    
-    <!-- Styles -->
+
     <style>
-        body {
+        html, body {
             margin: 0;
+            padding: 0;
             background: #111;
             font-family: sans-serif;
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
             height: 100vh;
-            overflow: hidden;
-            position: relative;
+            width: 100vw;
+            box-sizing: border-box;
+        }
+
+        /* Image + input section */
+        .image-section {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 5vw; /* Add uniform padding around content */
+            padding: 24px;
             box-sizing: border-box;
         }
 
-        img {
-            max-width: 100%;
-            max-height: 100%;
+        .main-image {
+            width: 100%;
+            max-width: 90vw;
+            max-height: 60vh;
             object-fit: contain;
-            display: block;
-            margin-top: 2vh; /* push slightly down from top */
-            border-radius: 6px;
+            border-radius: 8px;
+            margin-top: 16px;
+            background: #222;
             box-shadow:
                 0 0 0 1px rgba(255, 255, 255, 0.07),
-                0 2px 10px rgba(255, 255, 255, 0.08);     /* Glowing aura */
+                0 4px 10px rgba(255, 255, 255, 0.08);
         }
 
-        input[type="text"] {
-            margin-top: 4vh;
+        .description-box {
+            margin-top: 16px;
             width: 100%;
-            padding: 12px;
-            font-size: 0.75rem;
-            border-radius: 8px;
+            max-width: 90vw;
+        }
+
+        .description-box input {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            border-radius: 6px;
             border: 1px solid #ccc;
             box-sizing: border-box;
             background: #fff;
             color: #000;
         }
-            
-        button {
-            position: fixed;
-            bottom: 24px;
-            width: 50px;
-            height: 50px;
-            background: #55a800;
-            color: white;
-            font-weight: bolder;
+
+        /* Buttons section */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 20vh;
+            padding: 0 5.5vw;
+            background: #111;
+            box-sizing: border-box;
+        }
+
+        .send-btn {
+            width: 54px;  /* 80% of 64px */
+            height: 54px; /* 80% of 64px */
+            border-radius: 50%;
+            font-size: 1.24rem; /* slightly reduced font size */
+            font-weight: bold;
+            color: #fff;
             border: none;
-            border-radius: 50%; /* Make buttons circular */
-            font-size: 1.6rem;
-            line-height: 50px; /* Center content vertically */
-            text-align: center; /* Center content horizontally */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
         }
 
-        button:first-of-type { /* Checkmark button */
-            right: 86px; /* Position to the left of the X button */
-        }
-
-        button:last-of-type { /* X button */
-            right: 14px;
+        .send-btn:active {
+            transform: scale(0.95);
         }
 
         .cancel-btn {
-            background: maroon; /* Maroon color for the X button */
+            background: maroon;
         }
 
-        button:active {
-            transform: scale(0.96);
+        .confirm-btn {
+            background: #55a800;
         }
     </style>
 </head>
 <body>
-    <img id="latestImage" class="main-image" alt="Belge">
-    <input type="text" id="description" placeholder="Belgenin kısa açıklaması" />
-    
-    <button class="send-btn" id="sendBtn">&checkmark;</button>
-    <button class="send-btn cancel-btn" id="cancelBtn">&#x2715;</button>
+    <div class="container">
+        <!-- Image and input -->
+        <div class="image-section">
+            <img id="latestImage" class="main-image" alt="Belge">
+            <div class="description-box">
+                <input type="text" id="description" placeholder="Belgenin kısa açıklaması" />
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <button class="send-btn cancel-btn" id="cancelBtn">&#x2715;</button>
+            <button class="send-btn confirm-btn" id="sendBtn">&checkmark;</button>
+        </div>
+    </div>
 
     <script src="send.js"></script>
     <script src="../../utils/database.js"></script>
 </body>
-</html> 
+</html>

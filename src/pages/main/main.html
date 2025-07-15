@@ -27,8 +27,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 56px;
-            background-color: #73d700;
+            height: 76px;
+            background-color: #73dc04;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -60,7 +60,7 @@
             height: 44px;
             padding: 0 24px;
             border-radius: 32px; /* pill-shaped */
-            background-color: #73d700;
+            background-color: #73dc04;
             border: none;
             display: flex;
             align-items: center;
@@ -147,8 +147,8 @@
         }
 
         .voucher-item img {
-            width: 30vw;
-            height: 22.5vh;
+            width: 32vw;
+            height: 24vh;
             object-fit: contain;
             background-color: black;
             border-radius: 4px;
@@ -156,7 +156,7 @@
 
         .voucher-item h1 {
             margin-top: 4px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             font-size: 1.75rem;
             font-weight: bold;
             color: #333;
@@ -175,12 +175,50 @@
             font-size: 0.75rem;
             color: #333;
         }
+
+        #seferNoContainer {
+            display: inline-block;
+            background-color: #e8ffd4; /* Green background */
+            color: black;
+            font-weight: 500;
+            font-size: 0.8rem;
+            font-family: 'Roboto', sans-serif;
+            padding: 8px 16px;
+            border-radius: 999px; /* Pill shape */
+            margin-top: 16px; /* Space below header */
+            margin-left: 16px; /* Align with voucher items */
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .sefer-number {
+            font-weight: bolder;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%; /* Makes it a circle */
+            margin-left: 8px; /* Space from the number */
+            background-color: green;
+            box-shadow: 0 0 6px rgba(85, 168, 0, 0.8);
+        }
+        .status-indicator.inactive {
+            background-color: red; /* Red when inactive */
+            box-shadow: 0 0 6px rgba(217, 48, 37, 0.8);
+        }
     </style>
 </head>
 <body>        
     <div class="header">
         <div class="title">SEFER TAKİP</div>
         <div class="exit" id="exitButton" >&#x2715;</div> <!-- Unicode for X icon -->
+    </div>
+
+    <div id="seferNoContainer">
+        SEFER NO: <span class="sefer-number"></span>
+        <span class="status-indicator"></span>
     </div>
 
     <div id="voucherContainer" class="voucher-container"></div>

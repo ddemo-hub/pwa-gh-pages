@@ -36,10 +36,6 @@ async function displayVouchers() {
         const actionsDiv = document.createElement('div');
         actionsDiv.classList.add('voucher-actions');
 
-        const editButton = document.createElement('button');
-        editButton.textContent = 'DÜZENLE';
-        editButton.classList.add('voucher-button', 'edit-button');
-
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'SİL';
         deleteButton.classList.add('voucher-button', 'delete-button');
@@ -52,7 +48,6 @@ async function displayVouchers() {
             }
         });
 
-        actionsDiv.appendChild(editButton);
         actionsDiv.appendChild(deleteButton);
 
         voucherDetailsDiv.appendChild(description);
@@ -73,7 +68,9 @@ goButton.addEventListener('click', () => {
 });
 
 exitButton.addEventListener("click", function () {
-    window.location.href = '../../../index.html';
+    if (confirm('Çıkmak istediğinizden emin misiniz?')) {
+        window.location.href = '../../../index.html';
+    }
 });
 
 camInput.addEventListener('change', function () {
@@ -85,5 +82,19 @@ camInput.addEventListener('change', function () {
             window.location.href = '../send/send.html';
         };
         reader.readAsDataURL(file);
+    }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const seferNumberEl = document.querySelector(".sefer-number");
+    const statusIndicator = document.querySelector(".status-indicator");
+
+    const activeTripID = await getActiveTrip();
+    if (activeTripID) {
+        seferNumberEl.textContent = activeTripID;
+        statusIndicator.classList.remove("inactive");
+    } else {
+        seferNumberEl.textContent = "Aktif sefer yok";
+        statusIndicator.classList.add("inactive");
     }
 });

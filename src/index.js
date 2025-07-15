@@ -10,10 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    goButton.addEventListener('click', () => {
+    goButton.addEventListener('click', async () => {
         const seferKodu = input.value.trim();
         
         console.log("Sefer Kodu: ", seferKodu);
+        await activateTrip(123456789);
 
         window.location.href = 'src/pages/main/main.html';
     });

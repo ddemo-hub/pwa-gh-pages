@@ -41,11 +41,19 @@ async function activateTrip(id) {
 async function getActiveTrip() {
 	const db = await openDB();
 	const tx = db.transaction(TRIP_STORE, 'readonly');
+	const store = tx.objectStore(TRIP_STORE);
 	
-	const result = await tx.objectStore(TRIP_STORE).get('singleton');
-	
-	db.close();
-	return result?.tripID || null;
+	return new Promise((resolve, reject) => {
+		const request = store.get('singleton');
+		request.onsuccess = () => {
+			db.close();
+			resolve(request.result?.tripID || null);
+		};
+		request.onerror = () => {
+			db.close();
+			reject(request.error);
+		};
+	});
 }
 
 async function validateTrip(id) {
