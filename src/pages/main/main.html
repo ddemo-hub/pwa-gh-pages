@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
 
@@ -11,6 +11,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- Styles -->
     <style>
@@ -54,16 +55,19 @@
 
         .exit {
             font-size: 1.4rem;
+            font-weight: bold;
             color: white;
             cursor: pointer;
-            margin-right: 6px;
+            margin-right: 8px;
         }
 
         .info-button {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
             color: white;
             cursor: pointer;
-            margin-right: 18px; /* Space between info and exit button */
+            padding-top: 3px;
+            margin-right: 24px; /* Space between info and exit button */
         }
 
         .circle-button {
@@ -227,7 +231,7 @@
     <div class="header">
         <div class="title">SEFER TAKİP</div>
         <div class="header-actions">
-            <div class="info-button" id="infoButton">&#128712;</div> <!-- i button -->
+            <div class="info-button" id="infoButton">&#x24D8;</div> <!-- i button -->
             <div class="exit" id="exitButton" >&#x2715;</div> <!-- Unicode for X icon -->
         </div>
     </div>
