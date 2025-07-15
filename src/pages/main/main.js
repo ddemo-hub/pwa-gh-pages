@@ -7,7 +7,7 @@ goButton.addEventListener('click', () => {
 });
 
 exitButton.addEventListener("click", function () {
-    window.location.href = '../../index.html';
+    window.location.href = '../../../index.html';
 });
 
 camInput.addEventListener('change', function () {

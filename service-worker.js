@@ -4,11 +4,14 @@ const urlsToCache = [
 	'./',
 	'./index.html',
 	'./src/index.js',
-	'./src/main/main.html',
-	'./src/main/main.js',
-	'./src/send/send.html',
-	'./src/send/send.js',
+	
+	'./src/pages/main/main.html',
+	'./src/pages/main/main.js',
+	'./src/pages/send/send.html',
+	'./src/pages/send/send.js',
 
+	'./src/utils/database.js',
+	
 	'./manifest.json',
 
 	// ASSETS

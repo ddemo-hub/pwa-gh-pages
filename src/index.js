@@ -17,6 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Sefer Kodu: ', seferKodu)
 
         // DEV
-        window.location.href = 'src/main/main.html';
+        window.location.href = 'src/pages/main/main.html';
     });
 });
