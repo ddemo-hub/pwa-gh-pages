@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
 
@@ -47,10 +47,23 @@
             font-family: 'Michroma', sans-serif;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
         .exit {
             font-size: 1.4rem;
             color: white;
             cursor: pointer;
+            margin-right: 6px;
+        }
+
+        .info-button {
+            font-size: 1.75rem;
+            color: white;
+            cursor: pointer;
+            margin-right: 18px; /* Space between info and exit button */
         }
 
         .circle-button {
@@ -185,7 +198,7 @@
             font-family: 'Roboto', sans-serif;
             padding: 8px 16px;
             border-radius: 999px; /* Pill shape */
-            margin-top: 16px; /* Space below header */
+            margin-top: 18px; /* Space below header */
             margin-left: 16px; /* Align with voucher items */
             text-align: center;
             letter-spacing: 1px;
@@ -213,7 +226,10 @@
 <body>        
     <div class="header">
         <div class="title">SEFER TAKİP</div>
-        <div class="exit" id="exitButton" >&#x2715;</div> <!-- Unicode for X icon -->
+        <div class="header-actions">
+            <div class="info-button" id="infoButton">&#128712;</div> <!-- i button -->
+            <div class="exit" id="exitButton" >&#x2715;</div> <!-- Unicode for X icon -->
+        </div>
     </div>
 
     <div id="seferNoContainer">

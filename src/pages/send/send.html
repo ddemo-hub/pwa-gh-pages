@@ -17,6 +17,7 @@
             font-family: sans-serif;
             height: 100%;
             width: 100%;
+            overflow: hidden; /* prevent scrollbars */
         }
 
         .container {
@@ -27,24 +28,24 @@
             box-sizing: border-box;
         }
 
-        /* Image + input section */
         .image-section {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding: 24px;
+            justify-content: flex-start; /* already correct */
+            padding: 16px;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         .main-image {
             width: 100%;
             max-width: 90vw;
-            max-height: 60vh;
+            max-height: 50vh;
             object-fit: contain;
             border-radius: 8px;
-            margin-top: 16px;
+            margin-top: 24px; /* Add breathing room */
             background: #222;
             box-shadow:
                 0 0 0 1px rgba(255, 255, 255, 0.07),
@@ -52,14 +53,13 @@
         }
 
         .description-box {
-            margin-top: 16px;
             width: 100%;
             max-width: 90vw;
         }
 
         .description-box input {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             font-size: 1rem;
             border-radius: 6px;
             border: 1px solid #ccc;
@@ -68,22 +68,23 @@
             color: #000;
         }
 
-        /* Buttons section */
+        /* Button section */
         .button-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 20vh;
-            padding: 0 5.5vw;
+            padding: 12px 10vw;
             background: #111;
             box-sizing: border-box;
+            flex-shrink: 0; /* Prevent shrinking */
+            margin-bottom: 16px; /* Add spacing from bottom */
         }
 
         .send-btn {
-            width: 54px;  /* 80% of 64px */
-            height: 54px; /* 80% of 64px */
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
-            font-size: 1.24rem; /* slightly reduced font size */
+            font-size: 1.24rem;
             font-weight: bold;
             color: #fff;
             border: none;
